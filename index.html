@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A compact re-analysis of published functional-ultrasound BMI calibration results by Cathy Liu.">
+  <title>Ultrasound BMI Calibration Explorer · Cathy Liu</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header class="topbar">
+      <a class="brand" href="#top"><span class="brand-mark">CL</span>Cathy Liu</a>
+      <a class="contact-link" href="mailto:cathyliu014@gmail.com">Contact ↗</a>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="eyebrow">July 31, 2026</div>
+      <h1>Can yesterday’s calibration cut today’s bench burden?</h1>
+      <p class="dek">What published functional-ultrasound BMI results suggest about saving experimental time without giving up endpoint performance.</p>
+      <div class="hero-meta"><span>Cathy Liu</span><span>Research Associate candidate</span><span>Independent exploratory analysis</span></div>
+    </section>
+
+    <section class="article-intro">
+      <p>Calibration is an operational bottleneck in brain–machine interface experiments. I asked a narrow question with direct consequences for bench execution: if a decoder carries structure forward from a previous session, where does that reclaimed trial budget become scientifically useful?</p>
+      <aside><span>[1]</span>This analysis uses published group means from five task × subject cohorts; it does not reprocess the 34.3 GB imaging archive.</aside>
+    </section>
+
+    <section class="section" id="analysis">
+      <div class="kicker">01 · Calibration explorer</div>
+      <div class="heading"><h2>Pretraining moved significance earlier in every cohort.</h2><p>Select a task to inspect the number of trials needed to reach statistically significant decoding. Lower is better.</p></div>
+      <div class="selector" id="selector" aria-label="Choose a task and subject"></div>
+      <div class="analysis-grid">
+        <div class="chart-card">
+          <div class="chart-head"><div><span class="micro" id="subject"></span><h3 id="task"></h3></div><div class="reduction"><span id="reduction"></span><small>calibration trials</small></div></div>
+          <div class="slope" id="slope" aria-live="polite">
+            <span class="axis high">140 trials</span><span class="axis low">0 trials</span><i class="grid g1"></i><i class="grid g2"></i><i class="line" id="line"></i>
+            <div class="point current" id="current"><strong></strong><span>Current session only</span></div>
+            <div class="point pretrained" id="pretrained"><strong></strong><span>Cross-session pretraining</span></div>
+          </div>
+          <p class="chart-note" id="note"></p>
+        </div>
+        <aside class="readout">
+          <div class="readout-number" id="saved"></div><div class="readout-label">fewer trials to significance</div><div class="divider"></div>
+          <span class="micro">Endpoint performance</span><strong class="endpoint" id="endpoint"></strong><p id="endpoint-detail"></p>
+          <div class="interpretation">The paper reported no statistically significant loss in final performance from pretraining. The practical gain is faster entry into useful closed-loop data collection.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="kicker">02 · Cross-task result</div>
+      <div class="heading"><h2>The value is operational: fewer calibration trials, not inflated endpoints.</h2><p>The largest savings appear where the cold-start burden is highest. Preserve alignment, validate transfer early, then spend the released trial budget on biological generalization and robustness.</p></div>
+      <div class="metrics"><div><strong>65.3%</strong><span>median reduction in trials</span></div><div><strong>31.2</strong><span>median trials saved</span></div><div><strong>89.5</strong><span>largest trial saving</span></div></div>
+      <div class="cohorts" id="cohorts"></div>
+    </section>
+
+    <section class="section" id="workflow">
+      <div class="kicker">03 · Experiment-to-decision loop</div>
+      <div class="heading"><h2>Where a Research Associate makes the loop trustworthy.</h2><p>The published system operated at 2 Hz and made each prediction from the preceding 1.5 seconds of Power Doppler data. Reproducible biology, consistent probe placement and traceable metadata are part of the model.</p></div>
+      <div class="workflow">
+        <article><span>01</span><h3>Acquire</h3><p>Maintain the preparation, imaging plane and sample context that make cross-session alignment meaningful.</p><b>2 Hz Power Doppler</b></article>
+        <article><span>02</span><h3>Quality-control</h3><p>Record deviations, tissue state and run metadata before those variables become silent model error.</p><b>30 s rolling buffer</b></article>
+        <article><span>03</span><h3>Decode</h3><p>Use prior-session structure while checking that current data still supports the same biological mapping.</p><b>1.5 s decision window</b></article>
+        <article><span>04</span><h3>Iterate</h3><p>Turn saved calibration time into better controls, broader conditions and a more informative next experiment.</p><b>10–45 min reported saving</b></article>
+      </div>
+    </section>
+
+    <section class="section contribution">
+      <div><div class="kicker">What I would bring</div><h2>Hands-on experimental rigor plus computational follow-through.</h2></div>
+      <div class="contribution-list">
+        <p><span>Wet lab</span>Mammalian cell culture, sterile technique, fluorescence microscopy, flow cytometry, qPCR and protein assays.</p>
+        <p><span>In vivo</span>Mouse glioblastoma models, stereotaxic exposure, IVIS imaging, tissue collection and sample handling.</p>
+        <p><span>Data</span>Python and R analysis, scRNA-seq, quantitative visualization and an instinct for connecting readouts to the next experiment.</p>
+        <p><span>Execution</span>GMP/SOP documentation, method validation and careful handling of experimental deviations and provenance.</p>
+      </div>
+    </section>
+
+    <section class="section methods" id="methods">
+      <div class="kicker">Methods & limitations</div>
+      <div class="methods-grid"><div><h3>What was analyzed</h3><p>I transcribed the published group means for trials-to-significance and endpoint performance from Griggs, Norman et al. (2024), then calculated absolute and percentage trial reductions for five task × subject cohorts. This is a transparent secondary analysis of reported summary statistics, not a claim to have reprocessed the 34.3 GB imaging archive.</p></div><div><h3>What the result does not prove</h3><p>Two animals and a small number of sessions cannot establish clinical generalizability. Group means hide session-level variability, and trials are only a partial proxy for experimental cost. The useful result is a testable operational hypothesis: preserve alignment and validate transfer before collecting a full cold-start calibration set.</p></div></div>
+      <div class="sources"><a href="https://doi.org/10.1038/s41593-023-01500-7" target="_blank" rel="noreferrer">Nature Neuroscience paper ↗</a><a href="https://data.caltech.edu/records/pa710-cdn95" target="_blank" rel="noreferrer">Open CaltechDATA record ↗</a><a href="https://www.merge.io/blog" target="_blank" rel="noreferrer">Merge Labs research direction ↗</a></div>
+    </section>
+
+    <footer><div><strong>Cathy Liu</strong><span>Biotechnology · wet lab + computational biology</span></div><a href="mailto:cathyliu014@gmail.com">cathyliu014@gmail.com</a></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
